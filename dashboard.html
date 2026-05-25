@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel | BambuFocus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <div class="nav-logo">
+                <img src="assets/bambufocus-panda.png" alt="Panda Logo" class="nav-panda">
+                <h2>BambuFocus</h2>
+            </div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="#" class="nav-item active">Sala de Foco</a>
+            <a href="#" class="nav-item">Meus Editais</a>
+            <a href="#" class="nav-item">Tarefas</a>
+            <a href="#" class="nav-item">Desempenho</a>
+            <a href="#" class="nav-item">Configurações</a>
+        </div>
+
+        <div class="nav-actions">
+            <div class="streak-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flame-icon"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                <span>12 Dias</span>
+            </div>
+            
+            <div class="profile-menu">
+                <img src="https://ui-avatars.com/api/?name=Estudante&background=f7f4d5&color=0a3323" alt="Foto de Perfil" class="profile-pic">
+                <div class="nav-divider"></div>
+                <a href="login.html" class="logout-link">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <header class="welcome-card dash-card">
+            <div class="welcome-info">
+                <img src="assets/bambufocus-panda.png" alt="Panda BambuFocus" class="welcome-panda">
+                <div>
+                    <h1 class="dash-title">Bom dia, Estudante!</h1>
+                    <p class="dash-subtitle">Hoje é um ótimo dia para conquistar mais um tópico.</p>
+                </div>
+            </div>
+            <button class="btn-solid-green">+ Nova Tarefa</button>
+        </header>
+
+       <div class="dashboard-grid">
+            
+            <div class="grid-column-left">
+                <div class="dash-card timer-card rose-tint">
+                    <div class="card-header">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <h3 class="uppercase-title">CICLO POMODORO</h3>
+                    </div>
+                    <div class="timer-display" id="tempo">25:00</div>
+                    <div class="timer-controls">
+                        <button class="btn-primary" id="btn-iniciar">Iniciar Foco</button>
+                        <button class="btn-primary btn-outline">Pausa Curta</button>
+                    </div>
+                </div>
+
+                <div class="dash-card tasks-card bambu-tint">
+                    <div class="card-header">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        <h3 class="uppercase-title">FOCO DE HOJE</h3>
+                    </div>
+                    <ul class="task-list">
+                        <li><input type="checkbox"> Revisar modelo OSI (Redes)</li>
+                        <li><input type="checkbox"> Resolver 20 questões de Linux</li>
+                        <li><input type="checkbox"> Ler PDF sobre Hardware</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-column-right">
+                <div class="dash-card edital-card petrol-tint">
+                    <div class="card-header">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        <h3 class="uppercase-title">IMPORTAR NOVO EDITAL</h3>
+                    </div>
+                    <p class="card-desc">Cole o texto do seu edital abaixo.</p>
+                    <textarea class="large-textarea" placeholder="Ex: CÂMARA MUNICIPAL DE PALHOÇA ESTADO DE SANTA CATARINA EDITAL DE CONCURSO PÚBLICO Nº 001/2023..."></textarea>
+                    <button class="btn-primary btn-full">Filtrar e Organizar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dash-card goals-card">
+            <div class="card-header">
+                <svg class="card-icon" style="color: var(--verde-bambu);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <h3 class="uppercase-title">ACOMPANHAMENTO DE METAS LONGAS</h3>
+            </div>
+            
+            <div class="goals-container">
+                <div class="goal-item">
+                    <div class="goal-info">
+                        <span class="goal-name">Edital: Câmara Municipal</span>
+                        <span class="goal-percent">45%</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-fill" style="width: 45%; background-color: var(--azul-petroleo);"></div></div>
+                </div>
+
+                <div class="goal-item">
+                    <div class="goal-info">
+                        <span class="goal-name">Fluência em Inglês (Até Dez/2026)</span>
+                        <span class="goal-percent">65%</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-fill" style="width: 65%; background-color: var(--verde-bambu);"></div></div>
+                </div>
+
+                <div class="goal-item">
+                    <div class="goal-info">
+                        <span class="goal-name">Deploy do Projeto no GitHub</span>
+                        <span class="goal-percent">30%</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-fill" style="width: 30%; background-color: var(--rosa-poeira);"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; 2026 BambuFocus - Estudo Inteligente. Cultive seu futuro.</p>
+        </footer>
+
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
