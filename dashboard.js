@@ -37,3 +37,69 @@ function iniciarPomodoro() {
 }
 
 btnIniciar.addEventListener('click', iniciarPomodoro);
+
+/* LÓGICA CALENDÁRIO DINÂMICO */
+
+const monthYearText = document.getElementById('month-year');
+const calendarDays = document.getElementById('calendar-days');
+const prevBtn = document.getElementById('prev-month');
+const nextBtn = document.getElementById('next-month');
+
+let dataAtual = new Date();
+let mesAtual = dataAtual.getMonth(); 
+let anoAtual = dataAtual.getFullYear();
+
+const nomesMeses = [
+    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+];
+
+function renderizarCalendario() {
+
+    monthYearText.textContent = `${nomesMeses[mesAtual]} ${anoAtual}`;
+    
+    calendarDays.innerHTML = '';
+
+    const primeiroDiaDoMes = new Date(anoAtual, mesAtual, 1).getDay();
+    const totalDiasNoMes = new Date(anoAtual, mesAtual + 1, 0).getDate();
+    const totalDiasMesAnterior = new Date(anoAtual, mesAtual, 0).getDate(); 
+
+
+    for (let i = primeiroDiaDoMes - 1; i >= 0; i--) {
+        const diaDiv = document.createElement('div');
+        diaDiv.classList.add('cal-day', 'prev-month');
+        diaDiv.textContent = totalDiasMesAnterior - i;
+        calendarDays.appendChild(diaDiv);
+    }
+
+    for (let i = 1; i <= totalDiasNoMes; i++) {
+        const diaDiv = document.createElement('div');
+        diaDiv.classList.add('cal-day');
+        diaDiv.textContent = i;
+
+        const hoje = new Date();
+        if (i === hoje.getDate() && mesAtual === hoje.getMonth() && anoAtual === hoje.getFullYear()) {
+            diaDiv.classList.add('today');
+        }
+
+        diaDiv.addEventListener('click', () => {
+            diaDiv.classList.toggle('studied'); 
+        });
+
+        calendarDays.appendChild(diaDiv);
+    }
+}
+
+prevBtn.addEventListener('click', () => {
+    mesAtual--;
+    if (mesAtual < 0) { mesAtual = 11; anoAtual--; }
+    renderizarCalendario();
+});
+
+nextBtn.addEventListener('click', () => {
+    mesAtual++;
+    if (mesAtual > 11) { mesAtual = 0; anoAtual++; }
+    renderizarCalendario();
+});
+
+renderizarCalendario();
